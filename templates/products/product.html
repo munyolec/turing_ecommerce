@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="wrapper" class="container">
+<section class="header_text sub">
+    <img class="pageBanner" src="{% static 'themes/images/pageBanner.png' %}" alt="New products" >
+        <h4><span>Product Detail</span></h4>
+    </section>
+    <section class="main-content">	
+        			
+        <div class="row">						
+            <div class="span9">
+                <div class="row">
+                    <div class="span4">
+                        <img alt="" src="{{product.photo_main.url}}"></a>	
+                        
+                    </div>
+                    <div class="span5">
+                        <address>
+                            <strong>Brand:</strong> <span>{{product.name}}</span><br>
+                            <strong>Product Code:</strong> <span>{{product.id}}</span><br>
+                            <strong>Availability:</strong> <span>{{product.quantity}}</span><br>								
+                        </address>									
+                        <h4><strong>Price: ${{product.price}}</strong></h4>
+                    </div>
+                    <div class="span5">
+                        <form class="form-inline">
+                            <p>&nbsp;</p>
+                            <label>Qty:</label>
+                            <input type="text" class="span1" placeholder="1">
+                            <button class="btn btn-inverse" type="submit">Add to cart</button>
+                        </form>
+                    </div>							
+                </div>
+                <div class="row">
+                    <div class="span9">
+                        <ul>
+                            <h5>Product Description</h5>
+                            <div class="tab-pane active" id="home"><strong>{{product.description}}</strong></div>
+                        </ul>							 
+                        					
+                    </div>						
+                  
+                </div>
+            </div>
+            <div class="span3 col">
+                
+                <div class="block">								
+                    <h4 class="title"><strong>Best</strong> Seller</h4>								
+                    <ul class="small-product">
+                        <li>
+                            <a href="#" title="Praesent tempor sem sodales">
+                                <img src="themes/images/ladies/1.jpg" alt="Praesent tempor sem sodales">
+                            </a>
+                            <a href="#">Praesent tempor sem</a>
+                        </li>
+                          
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}    
+
