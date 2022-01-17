@@ -27,10 +27,15 @@
                         <form class="form-inline" method="POST">
                             {% csrf_token %}
                             <p>&nbsp;</p>
-                            <label>Quantity:</label>
-                            <input type="text" class="span1" placeholder="1">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <label>Quantity:</label>
+                                <input type="text" class="span1" placeholder="1">
                             <button class="btn btn-inverse" type="submit">Add to cart</button>
-                            <h4><strong>Total: ${{product.price * }}</strong></h4>
+                            </form>
+                            
+                            
+                            <h4><strong>Total: ${{product.price  }}</strong></h4>
                         </form>
                     </div>							
                 </div>

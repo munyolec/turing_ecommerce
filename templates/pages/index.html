@@ -30,15 +30,19 @@
                         <h4 class="title">
                             <!--******FEATURE PRODUCTS ***-->
                             <span class="pull-left"><span class="text"><span class="line">Featured <strong>Products</strong></span></span></span>
+                    
                             <!-- <span class="pull-right">
                                 <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
                             </span> -->
                         </h4>
-                           
+                      
                         <div id="myCarousel" class="myCarousel carousel slide">
                             <div class="carousel-inner">
                                 <div class="active item">
+                                    
                                     <ul class="thumbnails">	
+                                        
+                                    
                                     {% if products %}
                                         {% for product in products %}
                                         <li class="span3">
@@ -46,13 +50,14 @@
                                                 <span class="sale_tag"></span>
                                                 <p><a href="{% url 'product' product.id %}"><img src="{{product.photo_main.url}}" alt="" /></a></p>
                                                 <a href="{% url 'product' product.id %}" class="title">{{product.name}}</a><br/>
-                                                <a href="products.html" class="category">{{product.category}}</a>
-                                                <p class="price">${{product.price}}</p>
+                                                <a href="#" class="category">{{product.category_id}}</a>
+                                                <p class="price">${{ product.price }}</p>
                                             </div>
                                         </li>
                                         {%endfor%}
                                       
                                     {%else%}
+                                    <p>Sorry No Products Available at this time</p>
                                     
                                     {%endif%}
                                     </ul>            

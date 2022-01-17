@@ -1,17 +1,16 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from category.models import Category
+from products.models import Product
 
-# Create your views here.
-def index(request):
+# Create your views here
 
-    return render(request, 'category/categories.html')
 
 def category(request, category_id):
-    category=Category.objects.all()
-
-    context={
+    category = get_object_or_404(Category, pk=category_id)
+    context = {
         'category': category
     }
 
-    return render(request, 'category/category.html', context)    
+    return render(request, 'categories/category.html', context)
