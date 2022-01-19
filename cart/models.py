@@ -9,7 +9,7 @@ from django.utils.datetime_safe import datetime
 class Cart(models.Model):
      user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
      quantity = models.PositiveIntegerField(default=0)
-     total_price = models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
+     total_cart_price = models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
      updated = models.DateTimeField(auto_now=True)
      timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -18,9 +18,12 @@ class Cart(models.Model):
     
 
 class Entry(models.Model):
-    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
-    cart=models.ForeignKey(Cart, null= True, on_delete=models.CASCADE)
-    quantity=models.PositiveIntegerField()
+    # product = models.ForeignKey(Product, null=True, on_delete = models.CASCADE)
+    product = models.CharField(max_length=255, default='none')
+    product_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
+    # cart=models.ForeignKey(Cart, null= True, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    total_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
 
     def __str__(self):
-        return "This entry contains {} {}(s).".format(self.quantity, self.product.name)
+        return "This entry contains {} {}(s).".format(self.quantity, self.product)

@@ -11,31 +11,29 @@
         <div class="row">						
             <div class="span9">
                 <div class="row">
-                    <div class="span4">
-                        <img alt="" src="{{product.photo_main.url}}"></a>	
-                        
-                    </div>
-                    <div class="span5">
-                        <address>
-                            <strong>Brand:</strong> <span>{{product.name}}</span><br>
-                            <strong>Product Code:</strong> <span>{{product.id}}</span><br>
-                            <strong>Availability:</strong> <span>{{product.quantity}}</span><br>								
-                        </address>									
-                        <h4><strong>Price: ${{product.price}}</strong></h4>
-                    </div>
-                    <div class="span5">
-                        <form class="form-inline" method="POST">
-                            {% csrf_token %}
-                            <p>&nbsp;</p>
-                            <form action="" method="POST">
-                                {% csrf_token %}
+                    {% include 'partials/_alerts.html'%}
+                    <form class="form-inline" action="{% url 'entry' %}" method="POST">
+                        {% csrf_token %}
+                            <div class="span4">
+                                <img alt="" src="{{product.photo_main.url}}"></a>	
+                            </div>
+                            <div class="span5">
+                                <address>
+                                    <strong>Brand:</strong> <span >{{product.name}}</span><br>
+                                    <input type="text" name="product" style="display:none;" value="{{product.name}}"/>
+                                    <strong>Product Code:</strong> <span>{{product.id}}</span><br>
+                                    <input type="text"  name="product_id" style="display:none;" value="{{product.id}}"/>
+                                    <strong>Availability:</strong> <span>{{product.quantity}}</span><br>
+                                    <input type="text"  name="available_quantity" style="display:none;" value="{{product.quantity}}"/>								
+                                </address>									
+                                <h4><strong>Price: ${{product.price}}</strong></h4>
+                                <input type="text"  name="product_price" style="display:none;" value="{{product.price}}"/>
+                            </div>
+                            <div class="span5">
                                 <label>Quantity:</label>
-                                <input type="text" class="span1" placeholder="1">
-                            <button class="btn btn-inverse" type="submit">Add to cart</button>
-                            </form>
-                            
-                            
-                            <h4><strong>Total: ${{product.price  }}</strong></h4>
+                                <input type="text" class="span1" placeholder="1" name="quantity">
+                                <button class="btn btn-inverse" type="submit">Add to cart</button>
+                                <h4><strong>Total: ${{product.price  }}</strong></h4>
                         </form>
                     </div>							
                 </div>
