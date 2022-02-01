@@ -21,7 +21,7 @@
                                 <address>
                                     {% if user.is_authenticated %}
                                         <input type="hidden" name="user" value= "{{user.username}}">
-                                        <input type="hidden" name="cart" value= "{{cart.id}}">
+    
                                     {% else %}
                                         <input type="hidden" name="user_id" value= "0">
                                     {% endif %}    

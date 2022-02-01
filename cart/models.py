@@ -8,7 +8,7 @@ from django.utils.datetime_safe import datetime
 
 
 class Cart(models.Model):
-     user = models.ForeignKey(User, on_delete=models.CASCADE)    
+     user = models.ForeignKey(User, null=True, blank=True,on_delete=models.CASCADE)    
      total_price = models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
      timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     
@@ -20,7 +20,7 @@ class Entry(models.Model):
     product_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
     quantity = models.PositiveIntegerField()
     total_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, default=0)
+    cart = models.ForeignKey(Cart,null=True, blank=True, on_delete=models.CASCADE, default=0)
 
     def __str__(self):
         return "This entry contains {} {}(s).".format(self.quantity, self.product)
