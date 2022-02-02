@@ -9,7 +9,7 @@
             <div class="account pull-right">
                 <ul class="user-menu">				
                     <li><a href="#">My Account</a></li>
-                    <li><a href="cart.html">My Cart</a></li>
+                    <li><a href="{% url 'cart' %}">My Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>	
                     {% if user.is_authenticated %}	
                     <li>Welcome {{user.first_name}}</li>			

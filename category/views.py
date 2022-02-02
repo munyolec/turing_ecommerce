@@ -11,11 +11,13 @@ def category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     category_products = Product.objects.all().filter(category_id=category)
     
+    
 
     context = {
         'categories':categories,
         'category': category,
-        'category_products': category_products
+        'category_products': category_products,
+        
 
     }
     return render(request, 'category/category.html', context)

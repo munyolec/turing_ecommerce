@@ -1,7 +1,10 @@
 from html import entities
+from math import prod
 from django.shortcuts import redirect, render
+from pkg_resources import PkgResourcesDeprecationWarning
 from .models import Entry, Cart
 from products.models import Product
+from category.models import Category
 from django.contrib import messages
 from decimal import Decimal
 from django.contrib.auth.models import User
@@ -27,11 +30,20 @@ def get_cart_count(request):
         total_count += item.quantity
     return total_count
 
+def update_item_count(request):
+    cart = get_cart_user(request)
+    cart_items = Entry.objects.all().filter(cart=cart)
+    quantity = Entry.objects.values('quantity').filter(cart = cart)
+    for item in cart_items:
+        if item in cart_items:
+            quantity +=quantity
+    return quantity        
 
 def view_cart(request):
     cart = get_cart_user(request)
     cart_items = Entry.objects.filter(cart=cart)
-    print(cart_items)
+    categories = Category.objects.all()
+
     order_total = Decimal(0.0)
     for item in cart_items:
         order_total += (item.total_price)
@@ -40,7 +52,8 @@ def view_cart(request):
     context = {
         'cart': cart,
         'cart_items': cart_items,
-        'order_total': order_total
+        'order_total': order_total,
+        'categories': categories
     }    
 
     return render(request, 'cart/cart.html',context)
@@ -61,9 +74,23 @@ def entry(request):
         if quantity > available_quantity:
             messages.error(request, 'oops you have added more items to your cart that what is in store')
         else:
+            cart_items = Entry.objects.filter(cart=cart)
+            product_exists = cart_items.all().filter(product__iexact=product)
+            for prod in product_exists:
+                prod_quantity = prod.quantity
+                quantity =int(quantity)
+                if product == prod.product:
+                    prod_quantity += quantity
+                    Entry.objects.filter(product__iexact=product).update(quantity=prod_quantity)
+            # cart_items.save(update_fields='quantity')        
+            print(prod_quantity)
+                    
+          
             entry = Entry.objects.create(product=product, product_price=product_price,quantity=quantity,total_price=total_price, cart=cart)
+
             entry.save()
-            get_cart_count(request)
+            # get_cart_count(request)
+          
 
             messages.success(request, "Successfully added to cart")
 
