@@ -10,7 +10,6 @@ def index(request):
         'products': products,
         'categories':categories
     }
-    
     return render(request, 'pages/index.html',context)
 
 
@@ -19,14 +18,6 @@ def about(request):
     context ={
         'products': products
     }
-    
+
     return render(request, 'pages/about.html', context)    
 
-
-def categories(request):
-    categories=Category.objects.all()
-    context ={
-        'categories': categories
-    }
-    
-    return render(request, 'pages/categories.html', context)     

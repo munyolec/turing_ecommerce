@@ -14,7 +14,7 @@
                     <thead>
                         <tr>
                             <th>Remove</th>
-                            <th>Image</th>
+                            <!-- <th>Image</th> -->
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
@@ -26,9 +26,8 @@
                         {% for item in cart_items %}
                         <tr>
                             <td><input type="checkbox" value="option1"></td>
-                            <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
                             <td>{{item.product}}</td>
-                            <td>{{item.quantity}}</td>
+                            <td>${{item.quantity}}</td>
                             <td>${{item.product_price}}</td>
                             <td>${{item.total_price}}</td>
                         </tr>
@@ -38,13 +37,13 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <!-- <td>&nbsp;</td> -->
                             <td>&nbsp;</td>
                             <td><strong>{{order_total}}</strong></td>
                         </tr>	
                         {%else%}
-                        <h1>You have not added any items to your cart yet</h1>
-                        {%endif%}	  
+                    <h1>You have not added any items to your cart yet</h1>
+                    {%endif%}	  
                     </tbody>
                 </table>
                 <h4>What would you like to do next?</h4>
@@ -77,27 +76,3 @@
  
 </div>
 {% endblock %}        
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>
-    {% if cart_items %}
-    <h1>Your Cart has the following Items</h1>
-    {% for item in cart_items %}
-    <h5>{{item.product}}</h5> -<h5>{{item.total_price}}</h5>
-    {%endfor%}
-    {{order_total}}
-   
-    {%else%}
-    <h1>You have not added any items to your cart yet</h1>
-    {%endif%}
-</h1>

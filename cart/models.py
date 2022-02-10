@@ -17,6 +17,7 @@ class Cart(models.Model):
 
 class Entry(models.Model):
     product = models.CharField(max_length=255, default='none')
+    photo_main=models.ImageField(upload_to='photos/%Y/%m/%d/')
     product_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)
     quantity = models.PositiveIntegerField()
     total_price=models.DecimalField(decimal_places=2,max_digits=10, default=0.00)

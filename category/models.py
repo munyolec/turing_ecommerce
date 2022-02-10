@@ -3,7 +3,7 @@ from django.db.models.fields import CharField
 
 # Create your models here.
 class Category(models.Model):
-    name=CharField(max_length=255)
+    name = CharField(max_length=255)
 
 
     def __str__(self):

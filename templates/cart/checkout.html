@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="wrapper" class="container">
+ <section class="header_text sub">
+    <img class="pageBanner" src="{% static 'themes/images/pageBanner.png' %}" alt="New products" >
+    <h4><span>Check Out</span></h4>
+ </section>
+ <section class="main-content">
+    <div class="row">
+        <div class="span12">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Account &amp; Billing Details</a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <form action="">
+                                {% csrf_token %}
+                                <div class="row-fluid">
+                                    <div class="span4">
+                                        <h4>Your Personal Details</h4>
+                                        <div class="control-group">
+                                            <label class="control-label">First Name</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">Last Name</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>					  
+                                        <div class="control-group">
+                                            <label class="control-label">Email Address</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">Telephone</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Your Address</h4>
+                                        <div class="control-group">
+                                            <label class="control-label"><span class="required">*</span> Address :</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="control-group">
+                                            <label class="control-label"><span class="required">*</span> City:</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label"><span class="required">*</span> Post Code:</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label"><span class="required">*</span> Region / State:</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4> Payment</h4>
+                                            <div style="font-size: 24px;">
+                                               <i class="fa fa-cc-visa fa-lg" style="color:navy;"></i>
+                                                <i class="fa fa-cc-paypal fa-lg" style="color:rgb(114, 145, 202);"></i>
+                                                <i class="fa fa-cc-mastercard fa-lg" style="color:red;"></i>
+                                                
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <input type="submit" class="btn btn-inverse " value="Confirm Order" style="max-width:30rem; text-align:center;">
+                                        </div>
+                                    </div>									
+                                   						
+                              
+                                </div>
+                               
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>				
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}     

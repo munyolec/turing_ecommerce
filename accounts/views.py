@@ -33,7 +33,6 @@ def register(request):
                     messages.success(request, "you are now registered and can log in")
                     return redirect('login')
         
-
     return render(request, 'accounts/register.html')
 
 
@@ -53,7 +52,6 @@ def login(request):
             messages.error(request,'Invalid credentials')
             return redirect('login')
 
-
     return render(request, 'accounts/login.html')    
 
 def logout(request):
@@ -62,4 +60,7 @@ def logout(request):
         messages.success(request,"you are now logged out")
     return redirect ('index')
 
-    # return render(request, 'accounts/logout.html')
+ 
+
+
+

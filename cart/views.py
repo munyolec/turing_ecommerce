@@ -43,7 +43,6 @@ def view_cart(request):
     cart = get_cart_user(request)
     cart_items = Entry.objects.filter(cart=cart)
     categories = Category.objects.all()
-
     order_total = Decimal(0.0)
     for item in cart_items:
         order_total += (item.total_price)
@@ -65,6 +64,7 @@ def entry(request):
         cart = get_cart_user(request)
         product = request.POST['product']
         product_id = request.POST['product_id']
+        product_photo = request.POST['product_photo']
         available_quantity = request.POST['available_quantity']
         product_price = request.POST['product_price']
         quantity = request.POST['quantity']
@@ -76,23 +76,27 @@ def entry(request):
         else:
             cart_items = Entry.objects.filter(cart=cart)
             product_exists = cart_items.all().filter(product__iexact=product)
-            for prod in product_exists:
-                prod_quantity = prod.quantity
-                quantity =int(quantity)
-                if product == prod.product:
+            #We should check if prod exits, if it does, we update the quantity
+            if product_exists:
+                for prod in product_exists:
+                    prod_quantity = prod.quantity
+                    quantity =int(quantity)
+                    # We assume it is one so we just update the quantity
                     prod_quantity += quantity
                     Entry.objects.filter(product__iexact=product).update(quantity=prod_quantity)
-            # cart_items.save(update_fields='quantity')        
-            print(prod_quantity)
-                    
-          
-            entry = Entry.objects.create(product=product, product_price=product_price,quantity=quantity,total_price=total_price, cart=cart)
-
-            entry.save()
-            # get_cart_count(request)
-          
-
-            messages.success(request, "Successfully added to cart")
+                    messages.success(request, "Product quantity updated")
+            #exit the loop
+           
+            #If it doesn't, then we create a new entry
+            else:
+                entry = Entry.objects.create(product=product, photo_main=product_photo,product_price=product_price,quantity=quantity,total_price=total_price, cart=cart)
+                entry.save()
+                messages.success(request, "Successfully added to cart")
 
     return redirect('/products/'+product_id)
         
+def checkout(request):
+
+
+
+    return render(request, 'cart/checkout.html')        

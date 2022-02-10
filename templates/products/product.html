@@ -21,7 +21,6 @@
                                 <address>
                                     {% if user.is_authenticated %}
                                         <input type="hidden" name="user" value= "{{user.username}}">
-    
                                     {% else %}
                                         <input type="hidden" name="user_id" value= "0">
                                     {% endif %}    
@@ -29,6 +28,7 @@
                                     <input type="text" name="product" style="display:none;" value="{{product.name}}"/>
                                     <strong>Product Code:</strong> <span>{{product.id}}</span><br>
                                     <input type="text"  name="product_id" style="display:none;" value="{{product.id}}"/>
+                                    <input type="text"  name="product_photo" style="display:none;" value="{{product.photo_main}}"/>
                                     <strong>Availability:</strong> <span>{{product.quantity}}</span><br>
                                     <input type="text"  name="available_quantity" style="display:none;" value="{{product.quantity}}"/>								
                                 </address>									

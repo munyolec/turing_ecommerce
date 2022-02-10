@@ -8,15 +8,12 @@ from cart.models import Entry, Cart
 def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     categories = Category.objects.all()
-
     user_id = request.user.id
     cart = Cart.objects.values('user').filter(user=user_id)
-   
     context = {
         'product': product,
         'categories': categories,   
         'cart': cart     
-
     }
     return render(request, 'products/product.html', context)
 
