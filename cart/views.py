@@ -96,7 +96,8 @@ def entry(request):
     return redirect('/products/'+product_id)
         
 def checkout(request):
-
-
-
-    return render(request, 'cart/checkout.html')        
+    categories = Category.objects.all()
+    context = {
+        'categories' : categories,
+    }
+    return render(request, 'cart/checkout.html',context)        

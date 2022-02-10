@@ -25,31 +25,34 @@
                       
                         <div id="myCarousel" class="myCarousel carousel slide">
                             <div class="carousel-inner">
+                                {% if category_products %}
+                                 {% for category_product in category_products %}
+                               
+                                    
                                 <div class="active item">
-                                    
                                     <ul class="thumbnails">	
-                                        
-                                    
-                                    {% if category_products %}
-                                        {% for category_product in category_products %}
                                         <li class="span3">
+                                            <form action="{% url 'cat_product' %}" method ="POST">
+                                                {% csrf_token %}
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                
-                                                <p><a href="#"><img src="{{category_product.photo_main.url}}" alt="" /></a></p>
+                                                <input type="hidden" name="cat_product_id" value= "{{category_product.id}}">
+                                                <p><a href="{% url 'cat_product' %}"><img src="{{category_product.photo_main.url}}" alt=""/></a></p>
                                                 <a href="" class="title">{{category_product.name}} {{category_product.product_id}}</a><br/>
-                                                
                                                 <p class="price">${{category_product.price }}</p>
+                                                <button class="btn btn-inverse" type="submit">View Product</button>
                                             </div>
+                                         </form>
                                         </li>
                                         {%endfor%}
-                                      
                                     {%else%}
                                     <p>Sorry No Products Available at this time</p>
                                     
                                     {%endif%}
                                     </ul>            
                                 </div>
+                                </div>
+                           
                              
                             </div>							
                         </div>

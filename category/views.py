@@ -19,3 +19,8 @@ def category(request, category_id):
     }
     return render(request, 'category/category.html', context)
 
+def cat_product(request):
+    if request.method == 'POST':
+        cat_product_id= request.POST['cat_product_id']
+    
+    return redirect('/products/'+cat_product_id )
