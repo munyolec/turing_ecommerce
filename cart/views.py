@@ -57,7 +57,9 @@ def view_cart(request):
 
     return render(request, 'cart/cart.html',context)
 
-   
+def delete_items(request):
+
+     return render(request, 'cart/cart.html')
 # Create your views here.
 def entry(request):
     if request.method == 'POST':

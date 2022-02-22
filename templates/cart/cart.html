@@ -27,7 +27,7 @@
                         <tr>
                             <td><input type="checkbox" value="option1"></td>
                             <td>{{item.product}}</td>
-                            <td>${{item.quantity}}</td>
+                            <td>{{item.quantity}}</td>
                             <td>${{item.product_price}}</td>
                             <td>${{item.total_price}}</td>
                         </tr>
@@ -64,7 +64,8 @@
                     <strong>Total</strong>: $119.50<br>
                 </p>
                 <hr/>
-                <p class="buttons center">				
+                <p class="buttons center">	
+                    <button class="btn" type="button">Update</button>			
                     <a class="btn btn-inverse" type="submit" href="{% url 'checkout' %}">Checkout</a>
                 </p>					
             </div>
